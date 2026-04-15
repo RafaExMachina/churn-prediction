@@ -140,6 +140,19 @@ Modelos registrados:
 
 O projeto foi refatorado seguindo boas práticas de engenharia de software.
 
+src/
+
+├── api/          # API FastAPI
+
+├── data/         # Carregamento e preprocessamento
+
+├── features/     # Engenharia de atributos
+
+├── models/       # Treinamento de modelos
+
+├── pipeline/     # Orquestração do treino
+
+└── utils/        # Métricas e funções auxiliares
 
 ---
 
