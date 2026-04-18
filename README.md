@@ -53,207 +53,38 @@ Desenvolver um modelo de Machine Learning para prever churn de clientes, conside
 
 ---
 
-## 🤖 Modelo de Rede Neural (MLP)
+## 🚀 Etapa 4 — Documentação e Entrega Final
 
-Foi implementada uma rede neural do tipo **Multilayer Perceptron (MLP)** utilizando PyTorch:
+## 📄 Model Card
+Documentação completa do modelo: desempenho, limitações, vieses e cenários de falha.  
+Arquivo: docs/model_card.md
 
-- Arquitetura:
-  - Camadas densas (64 → 32 → 1)
-  - Função de ativação: ReLU
-  - Saída com Sigmoid
-- Treinamento:
-  - Loss: Binary Cross Entropy
-  - Otimizador: Adam
-  - Early stopping aplicado
+## 🏗️ Arquitetura de Deploy
+Cliente → API FastAPI → Modelo MLflow → Predição  
+Arquivo: docs/architecture.md
 
-### 📉 Resultado
+## 📊 Monitoramento da API
+- Logging estruturado
+- Medição de latência
+- Registro de erros
 
-O modelo MLP apresentou desempenho **ligeiramente inferior à Regressão Logística**, tanto em métricas quanto em lucro.
+Arquivo: docs/monitoring.md
 
-### 📌 Análise
+## 🐳 Containerização
 
-- O dataset é **tabular e relativamente pequeno**
-- Modelos lineares e baseados em árvore tendem a performar melhor nesse cenário
-- A rede neural não trouxe ganho significativo, aumentando a complexidade sem benefício claro
-
-👉 **Conclusão:** nem sempre modelos mais complexos são melhores.
-
----
-
-## ⚙️ Pipeline
-
-- StandardScaler  
-- One-hot encoding  
-- Train/test split estratificado  
-- Pipeline Scikit-Learn  
-
----
-
-## 🔬 Modelos Avaliados
-
-- DummyClassifier  
-- Logistic Regression  
-- Random Forest  
-- XGBoost  
-- MLP (PyTorch)  
-
----
-
-## 🧪 Métricas
-
-- Accuracy  
-- F1-score  
-- ROC-AUC  
-- PR-AUC  
-- Lucro de negócio  
-
----
-
-## 📊 MLflow
-
-Todos os experimentos foram rastreados com MLflow:
-
-- Registro de métricas e parâmetros  
-- Versionamento de modelos  
-- Model Registry utilizado  
-
-Modelos registrados:
-- churn_logreg  
-- churn_rf  
-- churn_xgb  
-- churn_mlp_model  
-
----
-
-## 🔁 Reprodutibilidade
-
-- random_state=42  
-- Pipeline padronizado  
-- Dataset versionado em `/data/processed`  
-- MLflow tracking  
-
----
-
-# 🚀 Etapa 3 — Engenharia de Software e API
-
-## 🏗️ Arquitetura do Projeto
-
-O projeto foi refatorado seguindo boas práticas de engenharia de software.
-
-src/
-
-├── api/          # API FastAPI
-
-├── data/         # Carregamento e preprocessamento
-
-├── features/     # Engenharia de atributos
-
-├── models/       # Treinamento de modelos
-
-├── pipeline/     # Orquestração do treino
-
-└── utils/        # Métricas e funções auxiliares
-
----
-
-## 🌐 API de Inferência (FastAPI)
-
-Foi desenvolvida uma API REST para servir o modelo treinado.
-
-### 🔗 Endpoints
-
-- `GET /` → status da API  
-- `GET /health` → verificação de saúde + modelo carregado  
-- `POST /predict` → predição de churn  
-
----
-
-## 📥 Exemplo de requisição
-
-```json
-{
-  "Conjuge": 1,
-  "Dependentes": 0,
-  "TelefoneFixo": 0,
-  "PagamentoOnline": 1,
-  "Maior65Anos": 0,
-  "MesesDeContrato": 1,
-  "ContaMensal": 29.85, ...
-}
-```
----
-
-## 📤 Resposta
-
-```json
-{
-  "prediction": 0
-}
+```bash
+docker-compose up --build
 ```
 
----
-
-## 🤖 Integração com MLflow
-
-O modelo é carregado diretamente do MLflow:
-
-- Garantia de versionamento
-- Reprodutibilidade
-- Deploy desacoplado do treino
+Acesse: http://localhost:8000/docs
 
 ---
 
-## 🧪 Testes Automatizados (Pytest)
+## 🎬 Conclusão Final
 
-Foram implementados testes para garantir a confiabilidade do sistema:
-
-- Teste de saúde da API (/health)
-- Teste de predição (/predict)
-- Teste de formato de entrada (pipeline)
-- Teste básico (sanidade)
-- Teste de latência da API
-
----
-
-## ▶️ Executar testes
-
-```bash 
-pytest -v
-```
-
----
-
-## 📈 Logging
-
-A API possui logging estruturado para:
-
-- Monitoramento de requisições
-- Debug de erros
-- Observabilidade do sistema
-
---- 
-
-## ⚡ Execução da API
-```
-uvicorn src.api.app:app --reload
-```
-Acesse a documentação interativa:
- 
-👉 http://127.0.0.1:8000/docs
-
----
-
-## Conclusão
-
-O projeto evoluiu de um modelo de Machine Learning para um sistema completo de predição em produção, incluindo:
-
-✔ Pipeline reprodutível
-
-✔ Modelos versionados
-
-✔ API de inferência
-
-✔ Testes automatizados
-
-✔ Arquitetura modular
-
+✔ Pipeline completo de ML  
+✔ API pronta para produção  
+✔ Testes automatizados  
+✔ Monitoramento  
+✔ Docker  
+✔ Documentação profissional  
