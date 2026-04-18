@@ -1,4 +1,9 @@
+# =========================
+# IMPORTS
+# =========================
+
 import logging
+import os
 import time
 
 import mlflow.pyfunc
@@ -12,7 +17,7 @@ from pydantic import BaseModel
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s | %(levelname)s | %(message)s"
 )
 
 logger = logging.getLogger(__name__)
@@ -43,19 +48,18 @@ async def log_latency(request: Request, call_next):
 # CAMINHO DO MODELO
 # =========================
 
-MODEL_PATH = (
-    "/home/rafa_exmaquina/Documentos/churn-prediction/"
-    "notebooks/mlruns/2/models/"
-    "m-18cc7ef2b03944359d34d0c1edeaa308/artifacts"
+MODEL_PATH = os.getenv(
+    "MODEL_PATH",
+    "models"
 )
 
 model = None
 
 try:
     model = mlflow.pyfunc.load_model(MODEL_PATH)
-    logger.info("✅ Modelo carregado com sucesso")
+    logger.info("Modelo carregado com sucesso")
 except Exception as e:
-    logger.error(f"❌ Erro ao carregar modelo: {e}")
+    logger.error(f"Erro ao carregar modelo: {e}")
 
 # =========================
 # SCHEMA (ENTRADA)
@@ -137,6 +141,14 @@ def predict(data: InputData):
 
     try:
         X = pd.DataFrame([data.model_dump()])
+
+        # 🔥 Log do input (monitoramento)
+        logger.info(f"Input recebido: {X.to_dict()}")
+
+        # 🔥 Regra simples de anomalia (exemplo)
+        if X["ContaMensal"].iloc[0] > 1000:
+            logger.warning("Valor anômalo detectado em ContaMensal")
+
         pred = model.predict(X)[0]
 
         logger.info(f"Predição realizada com sucesso: {pred}")

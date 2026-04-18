@@ -1,0 +1,23 @@
+artifact_path: /home/rafa_exmaquina/Documentos/churn-prediction/notebooks/mlruns/2/models/m-18cc7ef2b03944359d34d0c1edeaa308/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-18cc7ef2b03944359d34d0c1edeaa308
+model_size_bytes: 3369
+model_uuid: m-18cc7ef2b03944359d34d0c1edeaa308
+prompts: null
+run_id: a018e8facd3a499aaec022cac5060de0
+utc_time_created: '2026-04-06 22:47:58.333201'

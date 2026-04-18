@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  churn-api:
+    build: .
+    container_name: churn-api
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: notebooks/mlruns/2/models/m-18cc7ef2b03944359d34d0c1edeaa308/artifacts
