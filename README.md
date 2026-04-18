@@ -53,24 +53,160 @@ Desenvolver um modelo de Machine Learning para prever churn de clientes, conside
 
 ---
 
-## 🚀 Etapa 4 — Documentação e Entrega Final
+## 🤖 Modelo de Rede Neural (MLP)
+
+Foi implementada uma rede neural do tipo **Multilayer Perceptron (MLP)** utilizando PyTorch:
+
+- Arquitetura:
+  - Camadas densas (64 → 32 → 1)
+  - Função de ativação: ReLU
+  - Saída com Sigmoid
+- Treinamento:
+  - Loss: Binary Cross Entropy
+  - Otimizador: Adam
+  - Early stopping aplicado
+
+### 📉 Resultado
+
+O modelo MLP apresentou desempenho **ligeiramente inferior à Regressão Logística**, tanto em métricas quanto em lucro.
+
+### 📌 Análise
+
+- O dataset é **tabular e relativamente pequeno**
+- Modelos lineares e baseados em árvore tendem a performar melhor nesse cenário
+- A rede neural não trouxe ganho significativo, aumentando a complexidade sem benefício claro
+
+👉 **Conclusão:** nem sempre modelos mais complexos são melhores.
+
+---
+
+## ⚙️ Pipeline
+
+- StandardScaler  
+- One-hot encoding  
+- Train/test split estratificado  
+- Pipeline Scikit-Learn  
+
+---
+
+## 🔬 Modelos Avaliados
+
+- DummyClassifier  
+- Logistic Regression  
+- Random Forest  
+- XGBoost  
+- MLP (PyTorch)  
+
+---
+
+## 🧪 Métricas
+
+- Accuracy  
+- F1-score  
+- ROC-AUC  
+- PR-AUC  
+- Lucro de negócio  
+
+---
+
+## 📊 MLflow
+
+Todos os experimentos foram rastreados com MLflow:
+
+- Registro de métricas e parâmetros  
+- Versionamento de modelos  
+- Model Registry utilizado  
+
+Modelos registrados:
+- churn_logreg  
+- churn_rf  
+- churn_xgb  
+- churn_mlp_model  
+
+---
+
+## 🔁 Reprodutibilidade
+
+- random_state=42  
+- Pipeline padronizado  
+- Dataset versionado em `/data/processed`  
+- MLflow tracking  
+
+---
+
+# 🚀 Etapa 3 — Engenharia de Software e API
+
+## 🏗️ Arquitetura do Projeto
+
+src/
+
+├── api/          
+├── data/         
+├── features/     
+├── models/       
+├── pipeline/     
+└── utils/        
+
+---
+
+## 🌐 API de Inferência (FastAPI)
+
+- GET /  
+- GET /health  
+- POST /predict  
+
+---
+
+## 🧪 Testes Automatizados (Pytest)
+
+- Teste de saúde  
+- Teste de predição  
+- Teste de pipeline  
+- Teste de latência  
+
+---
+
+## 📈 Logging
+
+- Monitoramento de requisições  
+- Debug de erros  
+
+---
+
+# 🚀 Etapa 4 — Documentação e Entrega Final
 
 ## 📄 Model Card
-Documentação completa do modelo: desempenho, limitações, vieses e cenários de falha.  
-Arquivo: docs/model_card.md
+
+Documentação completa do modelo incluindo:
+
+- Performance  
+- Limitações  
+- Vieses  
+- Cenários de falha  
+
+📁 docs/model_card.md
+
+---
 
 ## 🏗️ Arquitetura de Deploy
+
 Cliente → API FastAPI → Modelo MLflow → Predição  
-Arquivo: docs/architecture.md
 
-## 📊 Monitoramento da API
-- Logging estruturado
-- Medição de latência
-- Registro de erros
+📁 docs/architecture.md
 
-Arquivo: docs/monitoring.md
+---
 
-## 🐳 Containerização
+## 📊 Monitoramento
+
+- Logging estruturado  
+- Medição de latência  
+- Observabilidade  
+
+📁 docs/monitoring.md
+
+---
+
+## 🐳 Docker
 
 ```bash
 docker-compose up --build
@@ -82,9 +218,10 @@ Acesse: http://localhost:8000/docs
 
 ## 🎬 Conclusão Final
 
-✔ Pipeline completo de ML  
-✔ API pronta para produção  
+✔ Pipeline ML completo  
+✔ API de produção  
 ✔ Testes automatizados  
 ✔ Monitoramento  
 ✔ Docker  
 ✔ Documentação profissional  
+
