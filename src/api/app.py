@@ -1,8 +1,8 @@
-import pandas as pd
-import mlflow.pyfunc
 import logging
 import time
 
+import mlflow.pyfunc
+import pandas as pd
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
 
@@ -43,7 +43,11 @@ async def log_latency(request: Request, call_next):
 # CAMINHO DO MODELO
 # =========================
 
-MODEL_PATH = "/home/rafa_exmaquina/Documentos/churn-prediction/notebooks/mlruns/2/models/m-18cc7ef2b03944359d34d0c1edeaa308/artifacts"
+MODEL_PATH = (
+    "/home/rafa_exmaquina/Documentos/churn-prediction/"
+    "notebooks/mlruns/2/models/"
+    "m-18cc7ef2b03944359d34d0c1edeaa308/artifacts"
+)
 
 model = None
 

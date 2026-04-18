@@ -1,0 +1,27 @@
+[project]
+name = "churn-prediction"
+version = "0.1.0"
+description = "API de predição de churn com FastAPI e MLflow"
+authors = [
+    { name = "Rafael Costa" }
+]
+requires-python = ">=3.10"
+
+# =========================
+# Ruff (lint)
+# =========================
+[tool.ruff]
+exclude = ["notebooks"]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]  # erros, falhas e imports
+ignore = []
+
+# =========================
+# Pytest
+# =========================
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
