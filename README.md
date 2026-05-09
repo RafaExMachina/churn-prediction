@@ -5,6 +5,15 @@ Desenvolver um modelo de Machine Learning para prever churn de clientes, conside
 
 ---
 
+## 🎥 Vídeo de Apresentação
+
+A apresentação do trabalho foi realizada utilizando o **método STAR**  
+(**Situação, Tarefa, Ação e Resultado**), com o objetivo de estruturar a explicação do projeto de forma clara, objetiva e orientada a resultados.
+
+🔗 Assista ao vídeo da apresentação: [Churn Prediction — Apresentação do Trabalho](https://youtu.be/pzJ3ZcZMuyw)
+
+---
+
 ## 🧠 Problema de Negócio
 - Custo churn: R$ 500  
 - Custo retenção: R$ 100  
