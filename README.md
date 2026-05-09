@@ -218,7 +218,7 @@ Cliente → API FastAPI → Modelo MLflow → Predição
 ## 🐳 Docker
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Acesse: http://localhost:8000/docs
